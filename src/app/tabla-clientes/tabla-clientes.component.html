@@ -1,0 +1,52 @@
+<!-- tabla.component.html -->
+<div>
+  <form (ngSubmit)="onSubmit()">
+      <input type="text" name="nombre" id="nombre" placeholder="buscar cliente" [(ngModel)]="nombreCliente.nombre">
+      <button type="submit">Buscar</button>
+  </form>
+  <label>
+      Ordenar <input type="checkbox"  [(ngModel)]="ordenar" (change)="onChangeOrdenar()"/> 
+  </label>
+  <label>
+      Deudores <input type="checkbox" [(ngModel)]="deuda" (change)="onChangeDeuda()"/> 
+  </label>
+  <button type="button" (click)="actualizarListaClientes()">Limpiar</button>
+</div>
+<table>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>DNI</th>
+        <th>Tipo de Domicilio</th>
+        <th>Consumo</th>
+        <th>Deuda</th>
+        <th>Descuento</th>
+        <th>Monto a Pagar</th>
+        <th>Acción</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cliente of clientes, let i">
+        <td>{{cliente.nombre}}</td>
+        <td>{{cliente.apellido}}</td>
+        <td>{{cliente.documento}}</td>
+        <td>{{cliente.typedomicilio}}</td>
+        <td>
+          {{cliente.typedomicilio === 'residencial' ? (cliente.consumo * 2.25) + '$' : (cliente.consumo * 4.5) + '$'}}
+        </td>
+        <td>{{cliente.deuda}}</td>
+        <td>
+          {{cliente.typedomicilio === 'residencial' ? cliente.consumo <= 2000 ? '0%' : cliente.consumo > 2000 && cliente.consumo <= 5000 ? '10%' : '15%' : cliente.consumo <= 5000 ? '0%' : cliente.consumo > 5000 && cliente.consumo <= 7000 ? '10%' : '15%' }}
+        </td>
+        <td>
+          {{cliente.typedomicilio === 'residencial' ? cliente.consumo <= 2000 ? cliente.consumo * 2.25 + cliente.deuda : cliente.consumo > 2000 && cliente.consumo < 5000 ? (cliente.consumo * 2.25 + cliente.deuda) - (cliente.consumo * 2.25 + cliente.deuda) * 10 / 100 + '$' : cliente.consumo * 2.25 + cliente.deuda - (cliente.consumo * 2.25 + cliente.deuda) * 15 / 100 + '$' : cliente.consumo < 5000 ? (cliente.consumo * 4.5 + cliente.deuda) : cliente.consumo > 5000 && cliente.consumo < 7000 ? cliente.consumo * 4.5 + cliente.deuda - (cliente.consumo * 4.5 + cliente.deuda) * 10 / 100 + '$' : cliente.consumo * 4.5 + cliente.deuda - (cliente.consumo * 4.5 + cliente.deuda ) * 15 / 100 + '$'  }}
+          <!-- {{cliente.typedomicilio === 'residencial' ? cliente.consumo > 2000 && cliente.consumo < 5000 ? (cliente.consumo * 2.25 + cliente.deuda) * 10 / 100 + '$' : (cliente.consumo * 2.25 + cliente.deuda) * 15 / 100 + '$'  :  cliente.consumo > 5000 && cliente.consumo < 7000 ? (cliente.consumo * 4.5 + cliente.deuda) * 10 / 100 + '$' : (cliente.consumo * 4.5 + cliente.deuda ) * 15 / 100 + '$' }} -->
+        </td>
+        <td>
+          <button type="button" (click)="eliminarCliente(cliente)">Borrar</button>
+        </td>
+      </tr>
+    </tbody>
+</table>
+  

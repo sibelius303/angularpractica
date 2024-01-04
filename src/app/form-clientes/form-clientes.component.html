@@ -1,0 +1,40 @@
+<form (ngSubmit)="onSubmit()" #clienteForm="ngForm">
+    <h4>Carga de Clientes</h4>
+    <div class="divInput">
+        <div class="labelInput">
+            <label for="nombre">Nombre</label>
+            <input type="text" name="nombre" id="nombre" [(ngModel)]="nuevoCliente.nombre" required>
+        </div>
+        <div class="labelInput">
+            <label for="apellido">Apellido</label>
+            <input type="text" name="apellido" id="apellido" [(ngModel)]="nuevoCliente.apellido" required>
+        </div>
+        <div class="labelInput">
+            <label for="documento">Documento</label>
+            <input type="text" name="documento" id="documento" [(ngModel)]="nuevoCliente.documento" required>
+        </div>
+        <div class="labelInput">
+            <label for="typedomicilio">Tipo de Domicilio</label>
+            <select name="typedomicilio" id="typedomicilio" [(ngModel)]="nuevoCliente.typedomicilio" required>
+                <option></option>
+                <option>
+                    residencial
+                </option>
+                <option>
+                    comercial
+                </option>
+            </select>
+        </div>
+        <div class="labelInput">
+            <label for="consumo">Consumo en Kw</label>
+            <input type="number" name="consumo" id="consumo" [(ngModel)]="nuevoCliente.consumo" required min="1">
+        </div>
+        <div class="labelInput">
+            <label for="deuda">Deuda</label>
+            <input type="number" name="deuda" id="deuda" [(ngModel)]="nuevoCliente.deuda" required>
+        </div>
+    </div>
+    <div class="divButton">
+        <button type="submit"  [disabled]="clienteForm.invalid">Agregar</button>
+    </div>
+</form>

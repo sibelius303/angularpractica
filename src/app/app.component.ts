@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +6,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'angular-app';
+
+  mostrar: boolean = true;
+
+  onChangeMostral(){
+    if(this.mostrar){
+      this.mostrar = false;
+    } else {
+      this.mostrar = true;
+    }
+    
+  }
+
+  title = 'Hola mundo en angular';
 }

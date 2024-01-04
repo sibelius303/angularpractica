@@ -1,0 +1,44 @@
+.labelInput {
+    display: flex;
+    flex-direction: column;
+}
+.divInput {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.divButton {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+h4 {
+    text-align: center;
+    font-size: 30px;
+}
+
+input {
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+select {
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+input:focus {
+    outline: none;
+    border-color: #4CAF50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+  }
+
+select:focus {
+    outline: none;
+    border-color: #4CAF50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+  }

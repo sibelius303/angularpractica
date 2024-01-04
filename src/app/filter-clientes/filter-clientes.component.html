@@ -1,0 +1,13 @@
+<div>
+    <form (ngSubmit)="onSubmit()">
+        <input type="text" name="nombre" id="nombre" placeholder="buscar cliente" [(ngModel)]="nombreCliente.nombre">
+        <button type="submit">Buscar</button>
+    </form>
+    <label>
+        Ordenar <input type="checkbox" /> 
+    </label>
+    <label>
+        Deudores <input type="checkbox"/> 
+    </label>
+    <button type="button">Limpiar</button>
+</div>
