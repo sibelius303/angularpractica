@@ -7,7 +7,7 @@ import { Component, Input } from '@angular/core';
 })
 export class AppComponent {
 
-  mostrar: boolean = true;
+  mostrar: boolean = false;
 
   onChangeMostral(){
     if(this.mostrar){
@@ -18,5 +18,4 @@ export class AppComponent {
     
   }
 
-  title = 'Hola mundo en angular';
 }

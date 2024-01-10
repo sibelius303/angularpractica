@@ -10,7 +10,7 @@
 <div class="content" role="main">
   <!-- Highlight Card -->
   <label>
-    Mostrar <input type="checkbox" [(ngModel)]="mostrar" (change)="onChangeMostral()" />
+    Mostrar <input type="checkbox" (change)="onChangeMostral()" />
   </label>
   <h1 *ngIf="mostrar">Lista de clientes Cesar electric</h1>
   <div class="formContent">
