@@ -8,11 +8,11 @@ export class NombreDelServicioService {
     { nombre: 'cesar', apellido: 'vallenilla', documento: '95992960', typedomicilio: 'residencial', consumo: 2000, deuda: 900 },
     { nombre: 'eduardo', apellido: 'torrealba', documento: '95992960', typedomicilio: 'comercial', consumo: 8000, deuda: 1900 },
   ];
+  listaFinal: any[] = []
 
   obtenerClientes(): any[] {
     return this.listaClientes;
   }
-
   agregarCliente(cliente: any): void {
     this.listaClientes.push(cliente);
   }

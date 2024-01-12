@@ -9,6 +9,7 @@ import { NombreDelServicioService } from '../nombre-del-servicio.service';
 export class FormClientesComponent {
 
   clientes: any[] = [];
+  listaFinal: any[] = [];
   nuevoCliente: any = {
     nombre: '',
     apellido: '',

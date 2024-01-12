@@ -27,21 +27,20 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let cliente of clientes, let i">
+      <tr *ngFor="let cliente of listaFinal, let i">
         <td>{{cliente.nombre}}</td>
         <td>{{cliente.apellido}}</td>
         <td>{{cliente.documento}}</td>
         <td>{{cliente.typedomicilio}}</td>
         <td>
-          {{cliente.typedomicilio === 'residencial' ? (cliente.consumo * 2.25) + '$' : (cliente.consumo * 4.5) + '$'}}
+          {{cliente.consumo}}
         </td>
         <td>{{cliente.deuda}}</td>
         <td>
-          {{cliente.typedomicilio === 'residencial' ? cliente.consumo <= 2000 ? '0%' : cliente.consumo > 2000 && cliente.consumo <= 5000 ? '10%' : '15%' : cliente.consumo <= 5000 ? '0%' : cliente.consumo > 5000 && cliente.consumo <= 7000 ? '10%' : '15%' }}
+          {{cliente.descuento }}
         </td>
         <td>
-          {{cliente.typedomicilio === 'residencial' ? cliente.consumo <= 2000 ? cliente.consumo * 2.25 + cliente.deuda + '$' : cliente.consumo > 2000 && cliente.consumo < 5000 ? (cliente.consumo * 2.25 + cliente.deuda) - (cliente.consumo * 2.25 + cliente.deuda) * 10 / 100 + '$' : cliente.consumo * 2.25 + cliente.deuda - (cliente.consumo * 2.25 + cliente.deuda) * 15 / 100 + '$' : cliente.consumo < 5000 ? (cliente.consumo * 4.5 + cliente.deuda) + '$' : cliente.consumo > 5000 && cliente.consumo < 7000 ? cliente.consumo * 4.5 + cliente.deuda - (cliente.consumo * 4.5 + cliente.deuda) * 10 / 100 + '$' : cliente.consumo * 4.5 + cliente.deuda - (cliente.consumo * 4.5 + cliente.deuda ) * 15 / 100 + '$'  }}
-          <!-- {{cliente.typedomicilio === 'residencial' ? cliente.consumo > 2000 && cliente.consumo < 5000 ? (cliente.consumo * 2.25 + cliente.deuda) * 10 / 100 + '$' : (cliente.consumo * 2.25 + cliente.deuda) * 15 / 100 + '$'  :  cliente.consumo > 5000 && cliente.consumo < 7000 ? (cliente.consumo * 4.5 + cliente.deuda) * 10 / 100 + '$' : (cliente.consumo * 4.5 + cliente.deuda ) * 15 / 100 + '$' }} -->
+          {{cliente.paid}}
         </td>
         <td>
           <button type="button" (click)="eliminarCliente(cliente)">Borrar</button>

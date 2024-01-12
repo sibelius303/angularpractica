@@ -9,6 +9,7 @@ import { NombreDelServicioService } from '../nombre-del-servicio.service';
 })
 export class TablaClientesComponent {
   clientes : any[] = [];
+  listaFinal: any[] = [];
   nombreCliente: any = {
     nombre: ''
   };
@@ -18,7 +19,19 @@ export class TablaClientesComponent {
 
   constructor(private clientesService: NombreDelServicioService) {
     this.clientes = this.clientesService.obtenerClientes();
+    this.procesarCliente()
   }
+
+  procesarCliente(){this.listaFinal = this.clientes.map(cliente => ({
+    nombre: cliente.nombre,
+    apellido: cliente.apellido,
+    documento: cliente.documento,
+    typedomicilio: cliente.typedomicilio,
+    consumo: cliente.typedomicilio === 'residencial' ? (cliente.consumo * 2.25) + '$' : (cliente.consumo * 4.5) + '$',
+    deuda: cliente.deuda,
+    descuento: cliente.typedomicilio === 'residencial' ? cliente.consumo <= 2000 ? '0%' : cliente.consumo > 2000 && cliente.consumo <= 5000 ? '10%' : '15%' : cliente.consumo <= 5000 ? '0%' : cliente.consumo > 5000 && cliente.consumo <= 7000 ? '10%' : '15%' ,
+    paid: cliente.typedomicilio === 'residencial' ? cliente.consumo <= 2000 ? cliente.consumo * 2.25 + cliente.deuda + '$' : cliente.consumo > 2000 && cliente.consumo < 5000 ? (cliente.consumo * 2.25 + cliente.deuda) - (cliente.consumo * 2.25 + cliente.deuda) * 10 / 100 + '$' : cliente.consumo * 2.25 + cliente.deuda - (cliente.consumo * 2.25 + cliente.deuda) * 15 / 100 + '$' : cliente.consumo < 5000 ? (cliente.consumo * 4.5 + cliente.deuda) + '$' : cliente.consumo > 5000 && cliente.consumo < 7000 ? cliente.consumo * 4.5 + cliente.deuda - (cliente.consumo * 4.5 + cliente.deuda) * 10 / 100 + '$' : cliente.consumo * 4.5 + cliente.deuda - (cliente.consumo * 4.5 + cliente.deuda ) * 15 / 100 + '$',
+  }))}
 
   eliminarCliente(cliente: any): void {
     this.clientesService.eliminarCliente(cliente);
